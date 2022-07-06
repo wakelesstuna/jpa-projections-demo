@@ -1,6 +1,7 @@
 package io.wakelesstuna.jpaprojectiondemo.repositories;
 
 import io.wakelesstuna.jpaprojectiondemo.entities.File;
+import io.wakelesstuna.jpaprojectiondemo.repositories.projections.FileInfoView;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;

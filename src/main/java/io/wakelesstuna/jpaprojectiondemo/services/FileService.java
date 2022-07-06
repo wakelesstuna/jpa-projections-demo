@@ -1,7 +1,7 @@
 package io.wakelesstuna.jpaprojectiondemo.services;
 
 import io.wakelesstuna.jpaprojectiondemo.entities.File;
-import io.wakelesstuna.jpaprojectiondemo.repositories.FileInfoView;
+import io.wakelesstuna.jpaprojectiondemo.repositories.projections.FileInfoView;
 import io.wakelesstuna.jpaprojectiondemo.repositories.FileRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -27,7 +27,7 @@ public class FileService {
         return fileRepository.findAllByOwner(owner);
     }
 
-    public void uploadFiles(final String owner, List<MultipartFile> files) {
+    public void uploadFiles(final String owner, final List<MultipartFile> files) {
         files.forEach(file -> {
             try {
                 File newFile = new File(UUID.randomUUID().toString(), owner, file.getName(), file.getContentType(), file.getSize(), file.getBytes());
@@ -44,7 +44,7 @@ public class FileService {
     }
 
     @Transactional
-    public List<File> getFileByOwner(String owner) {
+    public List<File> getFileByOwner(final String owner) {
         return fileRepository.findAllByOwnerOrderBySizeAsc(owner);
     }
 }

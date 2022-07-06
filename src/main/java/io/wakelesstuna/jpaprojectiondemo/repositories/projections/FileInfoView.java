@@ -1,4 +1,4 @@
-package io.wakelesstuna.jpaprojectiondemo.repositories;
+package io.wakelesstuna.jpaprojectiondemo.repositories.projections;
 
 public interface FileInfoView {
     String getId();

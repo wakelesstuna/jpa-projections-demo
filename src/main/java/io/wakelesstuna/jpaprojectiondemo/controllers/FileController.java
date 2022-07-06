@@ -1,13 +1,18 @@
 package io.wakelesstuna.jpaprojectiondemo.controllers;
 
 import io.wakelesstuna.jpaprojectiondemo.entities.File;
-import io.wakelesstuna.jpaprojectiondemo.repositories.FileInfoView;
+import io.wakelesstuna.jpaprojectiondemo.repositories.projections.FileInfoView;
 import io.wakelesstuna.jpaprojectiondemo.services.FileService;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
@@ -39,7 +44,7 @@ public record FileController(FileService fileService) {
 
     @PostMapping(consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     public ResponseEntity<Void> uploadFile(final String owner, final List<MultipartFile> files) {
-        fileService.uploadFiles(owner,files);
+        fileService.uploadFiles(owner, files);
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 
@@ -48,5 +53,4 @@ public record FileController(FileService fileService) {
         fileService.deleteFile(fileId);
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
-
 }
