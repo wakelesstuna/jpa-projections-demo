@@ -44,7 +44,7 @@ you decide what columns you want to retrieve from the entity in the database.
 To define a projection you create am interface that having matching getters 
 for the entity.
 <br/><br/>
-These are called Closed Projection, when the getters matching the getters in the pojo.
+These are called ``Closed Projection``, when the getters matching the getters in the pojo.
 ```java
 public interface PersonView {
     
@@ -68,7 +68,7 @@ What we get from the repository with projections.
   }
 }
 ```
-We can also use open projections which don't need the getters to be the same as the entity.
+We can also use ``Open Projection`` which don't need the getters to be the same as the entity.
 We can use the @Value annotation to write SpEL expression to fetch data from different columns
 and combine them.
 ```java
