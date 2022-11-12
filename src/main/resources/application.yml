@@ -1,9 +1,9 @@
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5432/jpa_demo
+    url: jdbc:postgresql://${database.url:localhost}:${database.port:5432}/jpa_demo
     driver-class-name: org.postgresql.Driver
-    username: root
-    password: letmein
+    username: ${database.username:root}
+    password: ${database.password:letmein}
   jpa:
     hibernate:
       ddl-auto: update
